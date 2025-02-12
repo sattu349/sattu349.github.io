@@ -92,14 +92,17 @@
             </ul>
         </nav>
     </header>
+    
     <section id="home">
         <h2>Welcome to Trip Tailor</h2>
         <p>Plan your perfect trip with AI-powered itineraries and hidden gems.</p>
     </section>
+    
     <section id="destinations">
         <h2>Popular Destinations</h2>
         <div id="destination-list"></div>
     </section>
+    
     <section id="planner">
         <h2>AI Itinerary Planner</h2>
         <label for="destination">Choose a Destination:</label>
@@ -107,17 +110,20 @@
         <button onclick="generateItinerary()">Plan My Trip</button>
         <div id="itinerary" class="loading">Loading...</div>
     </section>
+    
     <script>
         async function generateItinerary() {
             const destination = document.getElementById("destination").value;
             const itineraryElement = document.getElementById("itinerary");
             itineraryElement.innerHTML = "<span class='loading'>Generating itinerary...</span>";
+            
             try {
                 const response = await fetch("https://your-ai-backend.com/generate-itinerary", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ destination })
                 });
+                
                 if (!response.ok) {
                     throw new Error("Failed to fetch itinerary");
                 }
